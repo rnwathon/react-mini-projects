@@ -1,11 +1,8 @@
+import * as React from 'react';
+import Home from './Pages/0-Home';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>React Mini Projects</h1>
-      </header>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
