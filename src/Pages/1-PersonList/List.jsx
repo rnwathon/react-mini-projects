@@ -2,7 +2,7 @@ import * as React from 'react';
 
 function List(props) {
   const { list } = props;
-  if (!list && !list.length) return <p> No Data </p>;
+  if (list && !list.length) return <p className="text-center p-5"> No Data </p>;
 
   return (
     <ul className="p-5 divide-y">
