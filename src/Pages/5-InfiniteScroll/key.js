@@ -1,0 +1,3 @@
+const PEXELS_API_KEY = '563492ad6f917000010000012b3c4554b1ba47a9b19c5e20a18f7dff';
+
+export default PEXELS_API_KEY;

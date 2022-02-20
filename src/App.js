@@ -5,6 +5,7 @@ import PersonList from './Pages/1-PersonList';
 import RandomQuote from './Pages/2-RandomQuote';
 import Carousel from './Pages/3-Carousel';
 import FAQ from './Pages/4-FAQ';
+import InfiniteScroll from './Pages/5-InfiniteScroll';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/2-RandomQuote" element={<RandomQuote />} />
       <Route path="/3-Carousel" element={<Carousel />} />
       <Route path="/4-FAQ" element={<FAQ />} />
+      <Route path="/5-InfiniteScroll" element={<InfiniteScroll />} />
     </Routes>
   );
 }
