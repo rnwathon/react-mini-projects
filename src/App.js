@@ -6,6 +6,7 @@ import RandomQuote from './Pages/2-RandomQuote';
 import Carousel from './Pages/3-Carousel';
 import FAQ from './Pages/4-FAQ';
 import InfiniteScroll from './Pages/5-InfiniteScroll';
+import ColorGenerator from './Pages/6-ColorGenerator';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/3-Carousel" element={<Carousel />} />
       <Route path="/4-FAQ" element={<FAQ />} />
       <Route path="/5-InfiniteScroll" element={<InfiniteScroll />} />
+      <Route path="/6-ColorGenerator" element={<ColorGenerator />} />
     </Routes>
   );
 }
