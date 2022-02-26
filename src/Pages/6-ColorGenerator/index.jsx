@@ -3,6 +3,7 @@ import Values from 'values.js';
 import ColorBlock from './Components/ColorBlock';
 
 function ColorGenerator() {
+  const [isInvalid, setIsInvalid] = React.useState(false);
   const [colorInput, setColorInput] = React.useState('');
   const [colors, setColors] = React.useState({
     base: [],
@@ -29,6 +30,22 @@ function ColorGenerator() {
     setColors(generatedColors);
   }, []);
 
+  const handleClickGenerate = (e) => {
+    e.preventDefault();
+    // Hex value validation
+    const hexRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+    const isHexValue = hexRegex.test(colorInput);
+    if (!isHexValue) {
+      setIsInvalid(true);
+      setTimeout(() => {
+        setIsInvalid(false);
+      }, 1000);
+      return;
+    }
+    // Generate when passed the validation
+    generateColor(colorInput);
+  };
+
   React.useEffect(() => {
     generateColor('#CC2874');
   }, [generateColor]);
@@ -43,17 +60,16 @@ function ColorGenerator() {
         <div className="flex items-center gap-2">
           <input
             type="text"
-            className="px-4 py-2 border rounded-lg shadow-lg outline-none"
+            className={`px-4 py-2 border rounded-lg shadow-lg outline-none ${
+              isInvalid && 'animate-headShake'
+            }`}
             placeholder="#CC2874"
             onChange={(e) => setColorInput(e.target.value)}
           />
           <button
             type="button"
             className="bg-zinc-100 shadow-lg hover:bg-zinc-100 hover:shadow-xl active:shadow-lg border transition-all px-4 py-2 rounded-lg font-bold"
-            onClick={(e) => {
-              e.preventDefault();
-              generateColor(colorInput);
-            }}
+            onClick={handleClickGenerate}
           >
             Generate
           </button>
