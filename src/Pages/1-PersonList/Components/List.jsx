@@ -7,7 +7,11 @@ function List(props) {
   return (
     <ul className="p-5 divide-y">
       {list.map((data, idx) => (
-        <li key={`person-${idx}`} className="flex items-center p-3">
+        <li
+          key={`person-${idx}`}
+          data-testid="list-item"
+          className="flex items-center p-3"
+        >
           <img
             className="w-14 h-14 mr-2 rounded-full object-cover"
             src={data.image}
