@@ -40,7 +40,13 @@ A collection of mini projects created using [ReactJS](https://reactjs.org/) + [T
 - IntersectionOberver API
 - data fetching
 
-### 6. Color Generator (coming soon)
+### 6. Color Generator
+
+- state (useState)
+- useEffect
+- useCallback
+- forms
+- [values.js](https://noeldelgado.github.io/values.js/)
 
 ### 7. Todo List (coming soon)
 
