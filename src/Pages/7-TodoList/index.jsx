@@ -16,7 +16,7 @@ function TodoListApp() {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-    setTodos((prevTodos) => [...prevTodos, todoInput]);
+    setTodos((prevTodos) => [...prevTodos, { value: todoInput, checked: false }]);
     setTodoInput('');
   };
 
