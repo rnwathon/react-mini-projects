@@ -2,11 +2,11 @@ import * as React from 'react';
 
 function TodoListApp() {
   const [todos, setTodos] = React.useState([
-    'Grocery date',
-    'Pay bills',
-    'Go to courses',
-    'Summer camp',
-    'Do your bed',
+    { value: 'Grocery date', checked: false },
+    { value: 'Pay bills', checked: false },
+    { value: 'Go to courses', checked: false },
+    { value: 'Summer camp', checked: false },
+    { value: 'Do your bed', checked: false },
   ]);
   const [todoInput, setTodoInput] = React.useState('');
 
@@ -48,9 +48,14 @@ function TodoListApp() {
               // eslint-disable-next-line react/no-array-index-key
               <li key={`todo-${idx}`} className="py-2">
                 <label htmlFor={`todo-${idx}`}>
-                  <input id={`todo-${idx}`} type="checkbox" className="hidden peer" />
+                  <input
+                    id={`todo-${idx}`}
+                    type="checkbox"
+                    className="hidden peer"
+                    checked={todo.checked}
+                  />
                   <p className="peer-checked:line-through peer-checked:text-slate-400">
-                    {todo}
+                    {todo?.value}
                   </p>
                 </label>
               </li>
