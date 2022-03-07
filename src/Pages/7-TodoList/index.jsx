@@ -20,6 +20,12 @@ function TodoListApp() {
     setTodoInput('');
   };
 
+  const handleCheck = (idx) => {
+    const newTodos = [...todos];
+    newTodos[idx].checked = !newTodos[idx].checked;
+    setTodos(newTodos);
+  };
+
   return (
     <div className="bg-slate-100 h-screen">
       <header className="bg-green-300 h-80 flex items-center justify-center">
@@ -53,6 +59,7 @@ function TodoListApp() {
                     type="checkbox"
                     className="hidden peer"
                     checked={todo.checked}
+                    onChange={() => handleCheck(idx)}
                   />
                   <p className="peer-checked:line-through peer-checked:text-slate-400">
                     {todo?.value}
