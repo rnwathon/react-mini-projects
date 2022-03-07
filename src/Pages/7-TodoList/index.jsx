@@ -10,6 +10,11 @@ function TodoListApp() {
   ]);
   const [todoInput, setTodoInput] = React.useState('');
 
+  const taskLeft = React.useMemo(
+    () => todos.filter((todo) => todo.checked === false),
+    [todos]
+  );
+
   const handleChange = (e) => {
     setTodoInput(e.target.value);
   };
@@ -69,7 +74,7 @@ function TodoListApp() {
             ))}
           </ul>
           <section className="w-full p-5 rounded-b-lg">
-            <p className="text-green-800 font-bold"> 0 Task(s) Left</p>
+            <p className="text-green-800 font-bold"> {taskLeft.length} Task(s) Left</p>
           </section>
         </section>
       </section>
