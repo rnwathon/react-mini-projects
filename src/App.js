@@ -7,6 +7,7 @@ import Carousel from './Pages/3-Carousel';
 import FAQ from './Pages/4-FAQ';
 import InfiniteScroll from './Pages/5-InfiniteScroll';
 import ColorGenerator from './Pages/6-ColorGenerator';
+import TodoList from './Pages/7-TodoList';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/4-FAQ" element={<FAQ />} />
       <Route path="/5-InfiniteScroll" element={<InfiniteScroll />} />
       <Route path="/6-ColorGenerator" element={<ColorGenerator />} />
+      <Route path="/7-TodoList" element={<TodoList />} />
     </Routes>
   );
 }
