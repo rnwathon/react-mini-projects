@@ -48,7 +48,11 @@ A collection of mini projects created using [ReactJS](https://reactjs.org/) + [T
 - forms
 - [values.js](https://noeldelgado.github.io/values.js/)
 
-### 7. Todo List (coming soon)
+### 7. Todo List 
+
+- state (useState)
+- useMemo
+- forms
 
 ### 8. Pokedex (coming soon)
 
