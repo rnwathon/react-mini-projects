@@ -1,4 +1,6 @@
 import * as React from 'react';
+import InputField from './Components/InputField';
+import List from './Components/List';
 
 function TodoListApp() {
   const [todos, setTodos] = React.useState([
@@ -8,21 +10,9 @@ function TodoListApp() {
     { value: 'Summer camp', checked: false },
     { value: 'Do your bed', checked: false },
   ]);
-  const [todoInput, setTodoInput] = React.useState('');
 
-  const taskLeft = React.useMemo(
-    () => todos.filter((todo) => todo.checked === false),
-    [todos]
-  );
-
-  const handleChange = (e) => {
-    setTodoInput(e.target.value);
-  };
-
-  const handleAddTodo = (e) => {
-    e.preventDefault();
-    setTodos((prevTodos) => [...prevTodos, { value: todoInput, checked: false }]);
-    setTodoInput('');
+  const handleAddTodo = (data) => {
+    setTodos((prevTodos) => [...prevTodos, { value: data, checked: false }]);
   };
 
   const handleCheck = (idx) => {
@@ -37,46 +27,8 @@ function TodoListApp() {
         <h1 className="text-green-800 font-bold text-5xl tracking-wide">ToDo List</h1>
       </header>
       <section className="max-w-xl mx-auto px-5">
-        <section className="bg-white rounded-lg shadow-xl p-2 -mt-8 mb-5 h-14 flex items-stretch">
-          <input
-            type="text"
-            placeholder="What to do?"
-            className="grow pl-2 focus:outline-none"
-            value={todoInput}
-            onChange={handleChange}
-          />
-          <button
-            type="submit"
-            className="bg-green-500 hover:bg-green-600 px-8 h-full rounded-lg text-white"
-            onClick={handleAddTodo}
-          >
-            Submit
-          </button>
-        </section>
-        <section className="bg-white rounded-lg shadow-xl min-h-96">
-          <ul className="p-5 divide-y">
-            {todos.map((todo, idx) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <li key={`todo-${idx}`} className="py-2">
-                <label htmlFor={`todo-${idx}`}>
-                  <input
-                    id={`todo-${idx}`}
-                    type="checkbox"
-                    className="hidden peer"
-                    checked={todo.checked}
-                    onChange={() => handleCheck(idx)}
-                  />
-                  <p className="peer-checked:line-through peer-checked:text-slate-400">
-                    {todo?.value}
-                  </p>
-                </label>
-              </li>
-            ))}
-          </ul>
-          <section className="w-full p-5 rounded-b-lg">
-            <p className="text-green-800 font-bold"> {taskLeft.length} Task(s) Left</p>
-          </section>
-        </section>
+        <InputField onSubmit={handleAddTodo} />
+        <List todos={todos} onCheck={handleCheck} />
       </section>
     </div>
   );
