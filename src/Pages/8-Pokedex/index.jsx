@@ -47,32 +47,34 @@ function Pokedex() {
   }, [getPokemonList]);
 
   return (
-    <div className="pixel max-w-2xl h-screen mx-auto flex flex-col gap-2 px-5 py-20">
-      <Container className="grow-1 h-full">
-        <Container.Title>Pokedex</Container.Title>
-        <Container.Content className="flex flex-col sm:grid-cols-3 gap-4 p-2 h-full overflow-scroll">
-          {pokemonList?.length &&
-            pokemonList.map((pokemon, idx) => (
-              <Card
-                key={`pokemon-${idx}`}
-                className="px-4 py-2 text-center cursor-pointer bg-orange-100 hover:bg-orange-200"
-              >
-                {pokemon.name}
-              </Card>
-            ))}
-        </Container.Content>
-      </Container>
-      <div className="flex justify-between">
-        <p>
-          Page {page} of {totalPage}
-        </p>
-        <div className="flex gap-4">
-          <Button color="primary" onClick={handlePrevPage}>
-            {'<'}
-          </Button>
-          <Button color="primary" onClick={handleNextPage}>
-            {'>'}
-          </Button>
+    <div className="bg-orange-100">
+      <div className="pixel max-w-2xl h-screen mx-auto flex flex-col gap-2 px-5 py-20">
+        <Container className="grow-1 h-full">
+          <Container.Title className="bg-orange-100">Pokedex</Container.Title>
+          <Container.Content className="flex flex-col sm:grid-cols-3 gap-4 p-2 h-full overflow-scroll">
+            {pokemonList?.length &&
+              pokemonList.map((pokemon, idx) => (
+                <Card
+                  key={`pokemon-${idx}`}
+                  className="px-4 py-2 text-center cursor-pointer bg-orange-200 hover:bg-orange-300"
+                >
+                  {pokemon.name}
+                </Card>
+              ))}
+          </Container.Content>
+        </Container>
+        <div className="flex justify-between">
+          <p>
+            Page {page} of {totalPage}
+          </p>
+          <div className="flex gap-4">
+            <Button color="primary" onClick={handlePrevPage}>
+              {'<'}
+            </Button>
+            <Button color="primary" onClick={handleNextPage}>
+              {'>'}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
