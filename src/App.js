@@ -8,6 +8,7 @@ import FAQ from './Pages/4-FAQ';
 import InfiniteScroll from './Pages/5-InfiniteScroll';
 import ColorGenerator from './Pages/6-ColorGenerator';
 import TodoList from './Pages/7-TodoList';
+import Pokedex from './Pages/8-Pokedex';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/5-InfiniteScroll" element={<InfiniteScroll />} />
       <Route path="/6-ColorGenerator" element={<ColorGenerator />} />
       <Route path="/7-TodoList" element={<TodoList />} />
+      <Route path="/8-Pokedex" element={<Pokedex />} />
     </Routes>
   );
 }
