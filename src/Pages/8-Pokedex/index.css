@@ -34,3 +34,97 @@
   background-color: white;
   font-size: 1.5rem;
 }
+
+/* === BUTTON === */
+.pixel-btn {
+  color: black;
+  background-color: white;
+
+  position: relative;
+  display: inline-block;
+  padding: 6px 8px;
+  margin: var(--border-size);
+
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+
+  border-color: var(--border-color);
+  border-style: solid;
+  border-width: 4px;
+  border-image-source: var(--border-img-src-compact);
+  border-image-repeat: stretch;
+  border-image-repeat: space;
+  border-image-slice: 2;
+  border-image-width: 2;
+  border-image-outset: 2;
+}
+
+.pixel-btn::after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--border-size));
+  right: calc(-1 * var(--border-size));
+  bottom: calc(-1 * var(--border-size));
+  left: calc(-1 * var(--border-size));
+  box-shadow: inset -4px -4px rgb(209 213 219);
+}
+
+.pixel-btn:focus {
+  outline: 0;
+}
+
+.pixel-btn:hover {
+  text-decoration: none;
+  background-color: rgb(243 244 246);
+}
+
+.pixel-btn:hover::after {
+  box-shadow: inset -6px -6px rgb(209 213 219);
+}
+
+.pixel-btn:active {
+  text-decoration: none;
+  background-color: rgb(243 244 246);
+}
+
+.pixel-btn:active::after {
+  box-shadow: inset 4px 4px rgb(209 213 219) !important;
+}
+
+/* === BUTTON COLOR === */
+.pixel-btn.is-primary {
+  color: white;
+  background-color: var(--color-primary);
+}
+.pixel-btn.is-primary::after {
+  box-shadow: inset -4px -4px var(--color-primary-shadow);
+}
+.pixel-btn:hover.is-primary {
+  color: white;
+  background-color: var(--color-primary-hover);
+}
+.pixel-btn:hover.is-primary::after {
+  box-shadow: inset -6px -6px var(--color-primary-shadow);
+}
+.pixel-btn:active.is-primary::after {
+  box-shadow: inset 4px 4px var(--color-primary-shadow) !important;
+}
+.pixel-btn.is-danger {
+  color: white;
+  background-color: var(--color-danger);
+}
+.pixel-btn.is-danger::after {
+  box-shadow: inset -4px -4px var(--color-danger-shadow);
+}
+.pixel-btn:hover.is-danger {
+  color: white;
+  background-color: var(--color-danger-hover);
+}
+.pixel-btn:hover.is-danger::after {
+  box-shadow: inset -6px -6px var(--color-danger-shadow);
+}
+.pixel-btn:active.is-danger::after {
+  box-shadow: inset 4px 4px var(--color-danger-shadow) !important;
+}
