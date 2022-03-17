@@ -8,7 +8,7 @@ const modalPortal = document.getElementById('modal-portal');
 const Modal = ({ children, onClose, ...props }) =>
   reactDom.createPortal(
     <div
-      className="absolute inset-0 grid justify-center items-center bg-black/40 p-5"
+      className="pixel absolute inset-0 grid justify-center items-center bg-black/40 p-5"
       {...props}
     >
       <Card className="relative w-full sm:w-[800px] min-h-max bg-white">
