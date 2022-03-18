@@ -3,6 +3,7 @@ import Button from './Components/Button';
 import Card from './Components/Card';
 import Container from './Components/Container';
 import Modal from './Components/Modal';
+import Progress from './Components/Progress';
 import { useModal } from './Hooks';
 import './index.css';
 
@@ -115,7 +116,19 @@ function Pokedex() {
                     className="w-36"
                   />
                 </div>
-                <p className="text-center">{pokemonDetails?.name}</p>
+                <p className="text-center">{pokemonDetails?.name?.toUpperCase()}</p>
+                <div className="grid grid-cols-2 gap-4">
+                  <ul>
+                    {pokemonDetails?.stats?.map((data, idx) => (
+                      <li key={`stats-${idx}`}>
+                        <h2>
+                          {data?.stat?.name?.toUpperCase()}({data?.base_stat})
+                        </h2>
+                        <Progress value={data?.base_stat} max={255} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </>
             )}
           </Modal.Body>
