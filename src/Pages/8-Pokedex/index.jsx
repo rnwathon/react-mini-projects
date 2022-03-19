@@ -117,8 +117,8 @@ function Pokedex() {
                     className="w-36"
                   />
                 </div>
-                <p className="text-center">{pokemonDetails?.name?.toUpperCase()}</p>
-                <div className="grid grid-cols-2 gap-4">
+                <p className="text-center mb-4">{pokemonDetails?.name?.toUpperCase()}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <section>
                     <ul>
                       {pokemonDetails?.stats?.map((data, idx) => (
