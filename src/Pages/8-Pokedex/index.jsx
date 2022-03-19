@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from './Components/Button';
 import Card from './Components/Card';
 import Container from './Components/Container';
+import List from './Components/List';
 import Modal from './Components/Modal';
 import Progress from './Components/Progress';
 import { useModal } from './Hooks';
@@ -38,8 +39,8 @@ function Pokedex() {
     fetch(`${API_URL}/pokemon/${name}`)
       .then((res) => res.json())
       .then((data) => {
-        const { sprites, stats, types } = data;
-        setPokemonDetails({ name, sprites, stats, types });
+        const { moves, sprites, stats, types } = data;
+        setPokemonDetails({ name, moves, sprites, stats, types });
         setPokemonDetailsLoading(false);
       });
   };
@@ -118,16 +119,28 @@ function Pokedex() {
                 </div>
                 <p className="text-center">{pokemonDetails?.name?.toUpperCase()}</p>
                 <div className="grid grid-cols-2 gap-4">
-                  <ul>
-                    {pokemonDetails?.stats?.map((data, idx) => (
-                      <li key={`stats-${idx}`}>
-                        <h2>
-                          {data?.stat?.name?.toUpperCase()}({data?.base_stat})
-                        </h2>
-                        <Progress value={data?.base_stat} max={255} />
-                      </li>
-                    ))}
-                  </ul>
+                  <section>
+                    <ul>
+                      {pokemonDetails?.stats?.map((data, idx) => (
+                        <li key={`stats-${idx}`}>
+                          <h2>
+                            {data?.stat?.name?.toUpperCase()}({data?.base_stat})
+                          </h2>
+                          <Progress value={data?.base_stat} max={255} />
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                  <section>
+                    <h2>Moves</h2>
+                    <div className="h-96 overflow-scroll">
+                      <List>
+                        {pokemonDetails?.moves?.map((data, idx) => (
+                          <List.Item key={`moves-${idx}`}>{data?.move?.name}</List.Item>
+                        ))}
+                      </List>
+                    </div>
+                  </section>
                 </div>
               </>
             )}
