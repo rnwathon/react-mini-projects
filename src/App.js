@@ -9,6 +9,7 @@ import InfiniteScroll from './Pages/5-InfiniteScroll';
 import ColorGenerator from './Pages/6-ColorGenerator';
 import TodoList from './Pages/7-TodoList';
 import Pokedex from './Pages/8-Pokedex';
+import TriviaQuiz from './Pages/9-TriviaQuiz';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/6-ColorGenerator" element={<ColorGenerator />} />
       <Route path="/7-TodoList" element={<TodoList />} />
       <Route path="/8-Pokedex" element={<Pokedex />} />
+      <Route path="/9-TriviaQuiz" element={<TriviaQuiz />} />
     </Routes>
   );
 }
