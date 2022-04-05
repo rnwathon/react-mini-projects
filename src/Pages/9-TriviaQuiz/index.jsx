@@ -64,6 +64,16 @@ function TriviaQuiz() {
     setActiveQuestion((prevActiveQuestion) => prevActiveQuestion - 1);
   };
 
+  const handleClickResult = () => {
+    let score = 0;
+    for (let i = 0; i < state.answers.length; i += 1) {
+      const playerAnswer = state.answers[i];
+      const correctAnswer = state.quiz[i].correct_answer;
+      if (playerAnswer === correctAnswer) score += 10;
+    }
+    console.log(score);
+  };
+
   return (
     <>
       <div className="h-48 bg-violet-500 grid items-center justify-center mb-4">
@@ -98,14 +108,24 @@ function TriviaQuiz() {
               >
                 Prev
               </button>
-              <button
-                type="button"
-                className="px-4 py-2 bg-white border rounded-md hover:bg-violet-100 disabled:bg-slate-100 disabled:text-slate-400"
-                onClick={handleClickNext}
-                disabled={isNextDisabled}
-              >
-                Next
-              </button>
+              {activeQuestion < 9 ? (
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-white border rounded-md hover:bg-violet-100 disabled:bg-slate-100 disabled:text-slate-400"
+                  onClick={handleClickNext}
+                  disabled={isNextDisabled}
+                >
+                  Next
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="px-4 py-2 bg-violet-500 text-white border rounded-md hover:bg-violet-600"
+                  onClick={handleClickResult}
+                >
+                  Result
+                </button>
+              )}
             </div>
           </>
         ) : (
