@@ -23,15 +23,16 @@ const reducer = (state, action) => {
 };
 
 function TriviaQuiz() {
-  const [isStarted, setIsStarted] = React.useState(false);
   const [activeQuestion, setActiveQuestion] = React.useState();
+  const [route, setRoute] = React.useState('home');
+  const [score, setScore] = React.useState(0);
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   const isPrevDisabled = activeQuestion === 0;
   const isNextDisabled = !state.answers[activeQuestion];
 
   const handleClickCategory = (value) => {
-    setIsStarted(true);
+    setRoute('ingame');
     fetch(`${API_URL}/?amount=10&difficulty=easy&type=multiple&category=${value}`)
       .then((res) => res.json())
       .then((data) => {
@@ -65,13 +66,14 @@ function TriviaQuiz() {
   };
 
   const handleClickResult = () => {
-    let score = 0;
+    let currentScore = 0;
     for (let i = 0; i < state.answers.length; i += 1) {
       const playerAnswer = state.answers[i];
       const correctAnswer = state.quiz[i].correct_answer;
-      if (playerAnswer === correctAnswer) score += 10;
+      if (playerAnswer === correctAnswer) currentScore += 10;
     }
-    console.log(score);
+    setRoute('result');
+    setScore(currentScore);
   };
 
   return (
@@ -80,7 +82,20 @@ function TriviaQuiz() {
         <h1 className="text-2xl text-white">Trivia Quiz</h1>
       </div>
       <div className="container mx-auto text-center p-2">
-        {isStarted ? (
+        {route === 'home' && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-2">
+            {categories.map((category, idx) => (
+              <Card
+                key={`category-${idx}`}
+                className="cursor-pointer text-violet-500 hover:-translate-y-1 hover:shadow-xl hover:text-white hover:bg-violet-500 hover:shadow-violet-600 hover:border-violet-500"
+                onClick={() => handleClickCategory(category.value)}
+              >
+                {category.label}
+              </Card>
+            ))}
+          </div>
+        )}
+        {route === 'ingame' && (
           <>
             <Question className="-mt-16 mb-4">
               {state?.quiz[activeQuestion]?.question}
@@ -128,15 +143,40 @@ function TriviaQuiz() {
               )}
             </div>
           </>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-2">
-            {categories.map((category, idx) => (
-              <Card
-                key={`category-${idx}`}
-                className="cursor-pointer text-violet-500 hover:-translate-y-1 hover:shadow-xl hover:text-white hover:bg-violet-500 hover:shadow-violet-600 hover:border-violet-500"
-                onClick={() => handleClickCategory(category.value)}
-              >
-                {category.label}
+        )}
+        {route === 'result' && (
+          <div>
+            <h2 className="text-xl mb-2"> Result </h2>
+            <h3 className="text-3xl font-bold mb-2"> Score: {score} </h3>
+            <button
+              type="button"
+              className="px-4 py-2 mb-4 text-white bg-violet-500 rounded-md hover:bg-violet-600"
+            >
+              {' '}
+              Play Again{' '}
+            </button>
+            <h4 className="mb-2"> Review </h4>
+            {state?.quiz?.map((quiz, idx) => (
+              <Card key={`review-${idx}`} className="mb-2">
+                <p className="mb-2" dangerouslySetInnerHTML={{ __html: quiz.question }} />
+                <p>
+                  Your Answer:{' '}
+                  <span
+                    className="font-bold"
+                    dangerouslySetInnerHTML={{
+                      __html: state?.answers[idx],
+                    }}
+                  />{' '}
+                </p>
+                <p className="text-green-600">
+                  Correct Answer:{' '}
+                  <span
+                    className="font-bold"
+                    dangerouslySetInnerHTML={{
+                      __html: quiz?.correct_answer,
+                    }}
+                  />{' '}
+                </p>
               </Card>
             ))}
           </div>
