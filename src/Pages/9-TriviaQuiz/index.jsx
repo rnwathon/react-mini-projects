@@ -17,6 +17,8 @@ const reducer = (state, action) => {
       return { ...state, quiz: action.payload };
     case 'SET_ANSWER':
       return { ...state, answers: action.payload };
+    case 'RESET':
+      return { quiz: [], answers: [] };
     default:
       return state;
   }
@@ -74,6 +76,11 @@ function TriviaQuiz() {
     }
     setRoute('result');
     setScore(currentScore);
+  };
+
+  const handleClickPlayAgain = () => {
+    dispatch({ type: 'RESET' });
+    setRoute('home');
   };
 
   return (
@@ -151,6 +158,7 @@ function TriviaQuiz() {
             <button
               type="button"
               className="px-4 py-2 mb-4 text-white bg-violet-500 rounded-md hover:bg-violet-600"
+              onClick={handleClickPlayAgain}
             >
               {' '}
               Play Again{' '}
