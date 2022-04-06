@@ -171,19 +171,19 @@ function TriviaQuiz() {
               {activeQuestion === 9 ? (
                 <button
                   type="button"
+                  className="px-4 py-2 bg-violet-500 text-white border rounded-md hover:bg-violet-600"
+                  onClick={handleClickResult}
+                >
+                  Result
+                </button>
+              ) : (
+                <button
+                  type="button"
                   className="px-4 py-2 bg-white border rounded-md hover:bg-violet-100 disabled:bg-slate-100 disabled:text-slate-400"
                   onClick={handleClickNext}
                   disabled={isNextDisabled}
                 >
                   Next
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="px-4 py-2 bg-violet-500 text-white border rounded-md hover:bg-violet-600"
-                  onClick={handleClickResult}
-                >
-                  Result
                 </button>
               )}
             </div>
