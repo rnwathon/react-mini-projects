@@ -3,6 +3,7 @@ import Card from './Components/Card';
 import Option from './Components/Option';
 import Question from './Components/Question';
 import { categories } from './Constant';
+import shuffleArr from './Utils/shuffleArr';
 
 const API_URL = 'https://opentdb.com/api.php';
 
@@ -40,7 +41,7 @@ function TriviaQuiz() {
       .then((data) => {
         const quizWithOptions = data.results.map((quiz) => ({
           ...quiz,
-          options: [quiz.correct_answer, ...quiz.incorrect_answers],
+          options: shuffleArr([quiz.correct_answer, ...quiz.incorrect_answers]),
         }));
 
         dispatch({ type: 'SET_QUIZ', payload: quizWithOptions });
