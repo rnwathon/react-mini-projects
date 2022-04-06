@@ -2,6 +2,7 @@ import * as React from 'react';
 import Card from './Components/Card';
 import Option from './Components/Option';
 import Question from './Components/Question';
+import Skeleton from './Components/Skeleton';
 import { categories } from './Constant';
 import shuffleArr from './Utils/shuffleArr';
 
@@ -25,17 +26,44 @@ const reducer = (state, action) => {
   }
 };
 
+const SkeletonQuestion = () => (
+  <Card className="px-4 py-8 -mt-16 mb-4 flex flex-col items-center gap-2">
+    <Skeleton className="w-3/4" />
+    <Skeleton className="w-2/3" />
+    <Skeleton className="w-1/2" />
+  </Card>
+);
+
+const SkeletonOptions = () => (
+  <>
+    <Card className="px-2 py-4 flex justify-center">
+      <Skeleton className="w-1/2" />
+    </Card>
+    <Card className="px-2 py-4 flex justify-center">
+      <Skeleton className="w-1/2" />
+    </Card>
+    <Card className="px-2 py-4 flex justify-center">
+      <Skeleton className="w-1/2" />
+    </Card>
+    <Card className="px-2 py-4 flex justify-center">
+      <Skeleton className="w-1/2" />
+    </Card>
+  </>
+);
+
 function TriviaQuiz() {
   const [activeQuestion, setActiveQuestion] = React.useState();
   const [route, setRoute] = React.useState('home');
   const [score, setScore] = React.useState(0);
   const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  const isPrevDisabled = activeQuestion === 0;
-  const isNextDisabled = !state.answers[activeQuestion];
+  const isPrevDisabled = isLoading || activeQuestion === 0;
+  const isNextDisabled = isLoading || !state.answers[activeQuestion];
 
   const handleClickCategory = (value) => {
     setRoute('ingame');
+    setIsLoading(true);
     fetch(`${API_URL}/?amount=10&difficulty=easy&type=multiple&category=${value}`)
       .then((res) => res.json())
       .then((data) => {
@@ -46,6 +74,7 @@ function TriviaQuiz() {
 
         dispatch({ type: 'SET_QUIZ', payload: quizWithOptions });
         setActiveQuestion(0);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   };
@@ -105,22 +134,30 @@ function TriviaQuiz() {
         )}
         {route === 'ingame' && (
           <>
-            <Question className="-mt-16 mb-4">
-              {state?.quiz[activeQuestion]?.question}
-            </Question>
+            {isLoading ? (
+              <SkeletonQuestion />
+            ) : (
+              <Question className="-mt-16 mb-4">
+                {state?.quiz[activeQuestion]?.question}
+              </Question>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-              {state?.quiz[activeQuestion]?.options?.map((option, idx) => (
-                <Option
-                  key={`option-${idx}`}
-                  id={option}
-                  name="options"
-                  value={option}
-                  onChange={(e) => handleChangeOption(e, activeQuestion)}
-                  checked={option === state?.answers[activeQuestion]}
-                >
-                  {option}
-                </Option>
-              ))}
+              {isLoading ? (
+                <SkeletonOptions />
+              ) : (
+                state?.quiz[activeQuestion]?.options?.map((option, idx) => (
+                  <Option
+                    key={`option-${idx}`}
+                    id={option}
+                    name="options"
+                    value={option}
+                    onChange={(e) => handleChangeOption(e, activeQuestion)}
+                    checked={option === state?.answers[activeQuestion]}
+                  >
+                    {option}
+                  </Option>
+                ))
+              )}
             </div>
             <div className="flex justify-between">
               <button
@@ -131,7 +168,7 @@ function TriviaQuiz() {
               >
                 Prev
               </button>
-              {activeQuestion < 9 ? (
+              {activeQuestion === 9 ? (
                 <button
                   type="button"
                   className="px-4 py-2 bg-white border rounded-md hover:bg-violet-100 disabled:bg-slate-100 disabled:text-slate-400"
