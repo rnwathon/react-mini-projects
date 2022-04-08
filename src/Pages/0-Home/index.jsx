@@ -13,17 +13,62 @@ import project6Img from '../../Assets/Images/project-6.png';
 import project7Img from '../../Assets/Images/project-7.png';
 import project8Img from '../../Assets/Images/project-8.png';
 import project9Img from '../../Assets/Images/project-9.png';
+import project1WebP from '../../Assets/Images/project-1.webp';
+import project2WebP from '../../Assets/Images/project-2.webp';
+import project3WebP from '../../Assets/Images/project-3.webp';
+import project4WebP from '../../Assets/Images/project-4.webp';
+import project5WebP from '../../Assets/Images/project-5.webp';
+import project6WebP from '../../Assets/Images/project-6.webp';
+import project7WebP from '../../Assets/Images/project-7.webp';
+import project8WebP from '../../Assets/Images/project-8.webp';
+import project9WebP from '../../Assets/Images/project-9.webp';
 
 const projects = [
-  { title: 'Person List', image: project1Img, link: '/1-PersonList' },
-  { title: 'Random Quote', image: project2Img, link: '/2-RandomQuote' },
-  { title: 'Carousel', image: project3Img, link: '/3-Carousel' },
-  { title: 'FAQ (Accordion)', image: project4Img, link: '/4-FAQ' },
-  { title: 'Infinite Scroll', image: project5Img, link: '/5-InfiniteScroll' },
-  { title: 'Color Generator', image: project6Img, link: '/6-ColorGenerator' },
-  { title: 'To-do List', image: project7Img, link: '/7-TodoList' },
-  { title: 'Pokedex', image: project8Img, link: '/8-Pokedex' },
-  { title: 'Trivia Quiz', image: project9Img, link: '/9-TriviaQuiz' },
+  {
+    title: 'Person List',
+    link: '/1-PersonList',
+    image: { src: project1WebP, fallback: project1Img },
+  },
+  {
+    title: 'Random Quote',
+    link: '/2-RandomQuote',
+    image: { src: project2WebP, fallback: project2Img },
+  },
+  {
+    title: 'Carousel',
+    link: '/3-Carousel',
+    image: { src: project3WebP, fallback: project3Img },
+  },
+  {
+    title: 'FAQ (Accordion)',
+    link: '/4-FAQ',
+    image: { src: project4WebP, fallback: project4Img },
+  },
+  {
+    title: 'Infinite Scroll',
+    link: '/5-InfiniteScroll',
+    image: { src: project5WebP, fallback: project5Img },
+  },
+  {
+    title: 'Color Generator',
+    link: '/6-ColorGenerator',
+    image: { src: project6WebP, fallback: project6Img },
+  },
+  {
+    title: 'To-do List',
+    link: '/7-TodoList',
+    image: { src: project7WebP, fallback: project7Img },
+  },
+  {
+    title: 'Pokedex',
+    link: '/8-Pokedex',
+    image: { src: project8WebP, fallback: project8Img },
+  },
+  {
+    title: 'Trivia Quiz',
+    link: '/9-TriviaQuiz',
+    image: { src: project9WebP, fallback: project9Img },
+  },
 ];
 
 function Home() {
