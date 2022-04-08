@@ -1,4 +1,4 @@
-![React Mini Projects](src/Assets/images/mini-projects.png)
+![React Mini Projects](src/Assets/Images/mini-projects.png)
 
 <h1 align="center"> React Mini Projects </h1>
 
