@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-mini-projects/static/css/main.2c0047df.css",
-    "main.js": "/react-mini-projects/static/js/main.309f1f7f.js",
+    "main.js": "/react-mini-projects/static/js/main.9132c40a.js",
     "static/js/787.0c79a6eb.chunk.js": "/react-mini-projects/static/js/787.0c79a6eb.chunk.js",
     "static/media/project-5.png": "/react-mini-projects/static/media/project-5.0e9ac742087f6e601b32.png",
     "static/media/project-5.webp": "/react-mini-projects/static/media/project-5.fe388867dddf5a265db1.webp",
@@ -23,11 +23,11 @@
     "static/media/project-8.webp": "/react-mini-projects/static/media/project-8.16ea4e62d7445ad54743.webp",
     "index.html": "/react-mini-projects/index.html",
     "main.2c0047df.css.map": "/react-mini-projects/static/css/main.2c0047df.css.map",
-    "main.309f1f7f.js.map": "/react-mini-projects/static/js/main.309f1f7f.js.map",
+    "main.9132c40a.js.map": "/react-mini-projects/static/js/main.9132c40a.js.map",
     "787.0c79a6eb.chunk.js.map": "/react-mini-projects/static/js/787.0c79a6eb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2c0047df.css",
-    "static/js/main.309f1f7f.js"
+    "static/js/main.9132c40a.js"
   ]
 }
