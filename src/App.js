@@ -13,7 +13,7 @@ import TriviaQuiz from './Pages/9-TriviaQuiz';
 
 function App() {
   return (
-    <Routes>
+    <Routes path="/react-mini-projects">
       <Route path="/" element={<Home />} />
       <Route path="/1-PersonList" element={<PersonList />} />
       <Route path="/2-RandomQuote" element={<RandomQuote />} />
