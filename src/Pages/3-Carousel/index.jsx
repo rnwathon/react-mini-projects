@@ -8,7 +8,10 @@ function Carousel() {
       <Slider>
         {data.map((d, idx) => (
           <Slider.Item key={`slider-item-${idx}`}>
-            <div className="flex flex-col min-w-full p-5 text-center">
+            <div
+              className="flex flex-col min-w-full p-5 text-center"
+              data-testid="slider-item"
+            >
               <img
                 src={d.image}
                 alt="avatar"
